@@ -14,9 +14,10 @@ function App() {
   const [unit, setUnit] = useState("metric"); // "metric" = Celsius, "imperial" = Fahrenheit
 
   async function getWeather(city) {
-    if (!city) {
+    if (!city || !/[a-zA-Z]/.test(city)) {
       setError("Please enter a valid city name.");
       setWeather(null); // Clear previous weather data if the input is invalid
+      setForecast([]); // Clear previous forecast data if the input is invalid
       return;
     }
 
@@ -80,15 +81,17 @@ function App() {
 
             <button
               className="btn btn-outline-light mt-3"
-              onClick={() => setUnit(unit == "metric" ? "imperial" : "metric")}
+              onClick={() => setUnit(unit === "metric" ? "imperial" : "metric")}
               >
-                Switch to {unit == "metric" ? "°F" : "°C"}
+                Switch to {unit === "metric" ? "°F" : "°C"}
               </button>
 
-            {loading && <p className="text-white">Loading...</p>} {/* This displays a loading message while the API call is in progress */}
-            {error && <p className="text-danger">{error}</p>} {/* This displays any error messages that occur during the API call */}
+            <div className="mt-4">
+              {loading && <p className="text-white">Loading...</p>} {/* This displays a loading message while the API call is in progress */}
+              {error && <p className="text-danger">{error}</p>} {/* This displays any error messages that occur during the API call */}
 
-            {weather && <CurrentWeather weather={weather} unit={unit}/>}
+              {weather && <CurrentWeather weather={weather} unit={unit}/>}
+            </div>
 
             {forecast.length > 0 && <Forecast forecast={forecast} unit={unit}/>}
           </div>

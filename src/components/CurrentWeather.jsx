@@ -3,7 +3,7 @@ function CurrentWeather({ weather, unit }) {
         return null;
     }
 
-    const temp = unit == "metric"
+    const temp = unit === "metric"
     ? weather.main.temp
     : (weather.main.temp * 9) / 5 + 32;
 
@@ -15,7 +15,7 @@ function CurrentWeather({ weather, unit }) {
 
             <p>
                 Temperature: {Math.round(temp)}°
-                {unit == "metric" ? "C" : "F"}
+                {unit === "metric" ? "C" : "F"}
                 </p>
             <p>Condition: {weather.weather[0].description}</p>
             <p>Humidity: {weather.main.humidity}%</p>
