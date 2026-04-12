@@ -1,7 +1,11 @@
-function CurrentWeather({ weather }) {
+function CurrentWeather({ weather, unit }) {
     if (!weather || weather.cod != 200) {
         return null;
     }
+
+    const temp = unit == "metric"
+    ? weather.main.temp
+    : (weather.main.temp * 9) / 5 + 32;
 
     return (
         <div className="weather-card text-white">
@@ -9,7 +13,10 @@ function CurrentWeather({ weather }) {
                 {weather.name}, {weather.sys.country}
             </h2>
 
-            <p>Temperature: {Math.round(weather.main.temp)}°C</p>
+            <p>
+                Temperature: {Math.round(temp)}°
+                {unit == "metric" ? "C" : "F"}
+                </p>
             <p>Condition: {weather.weather[0].description}</p>
             <p>Humidity: {weather.main.humidity}%</p>
             <p>Wind Speed: {weather.wind.speed} m/s</p>

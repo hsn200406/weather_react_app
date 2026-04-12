@@ -11,6 +11,7 @@ function App() {
   const [loading, setLoading] = useState(false); // This checks if the app is currently fetching data from the API
   const [error, setError] = useState(""); // This stores any error messages that may occur during the API call
   const [forecast, setForecast] = useState([]);
+  const [unit, setUnit] = useState("metric"); // "metric" = Celsius, "imperial" = Fahrenheit
 
   async function getWeather(city) {
     if (!city) {
@@ -77,12 +78,19 @@ function App() {
           <div className='mt-5'>
             <SearchBar onSearch={getWeather} />
 
+            <button
+              className="btn btn-outline-light mt-3"
+              onClick={() => setUnit(unit == "metric" ? "imperial" : "metric")}
+              >
+                Switch to {unit == "metric" ? "°F" : "°C"}
+              </button>
+
             {loading && <p className="text-white">Loading...</p>} {/* This displays a loading message while the API call is in progress */}
             {error && <p className="text-danger">{error}</p>} {/* This displays any error messages that occur during the API call */}
 
-            {weather && <CurrentWeather weather={weather} />}
+            {weather && <CurrentWeather weather={weather} unit={unit}/>}
 
-            {forecast.length > 0 && <Forecast forecast={forecast} />}
+            {forecast.length > 0 && <Forecast forecast={forecast} unit={unit}/>}
           </div>
         </div>
       </div>
