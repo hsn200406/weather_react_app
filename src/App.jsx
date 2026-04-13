@@ -76,6 +76,7 @@ function App() {
         <div className="col-md-6 text-center">
 
           <h1 className="text-white mb-4">Weather App</h1>
+          <p className="text-light mb-4">Get current weather and a 5-day forecast for any city worldwide</p>
           <div className='mt-5'>
             <SearchBar onSearch={getWeather} />
 

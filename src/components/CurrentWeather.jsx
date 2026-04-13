@@ -7,11 +7,19 @@ function CurrentWeather({ weather, unit }) {
     ? weather.main.temp
     : (weather.main.temp * 9) / 5 + 32;
 
+    const currentDate = new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+
     return (
         <div className="weather-card text-white">
+            <h3 className="mb-3">Current Weather</h3>
             <h2>
                 {weather.name}, {weather.sys.country}
             </h2>
+            <p className="text-muted mb-3">{currentDate}</p>
 
             <p>
                 Temperature: {Math.round(temp)}°
