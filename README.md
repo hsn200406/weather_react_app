@@ -4,7 +4,7 @@ A beautiful, responsive weather application built with React and Vite that provi
 
 ## � Live Demo
 
-**[Visit the Live App](https://weather-react-4ir5je9xa-hsn200406s-projects.vercel.app/)** – Try it out now without any setup!
+**[Visit the Live App](https://weather-react-2kqeql21s-hsn200406s-projects.vercel.app/)** – Try it out now without any setup!
 
 ## �🌟 Features
 
