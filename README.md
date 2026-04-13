@@ -2,7 +2,11 @@
 
 A beautiful, responsive weather application built with React and Vite that provides real-time weather information and forecasts for any city in the world.
 
-## 🌟 Features
+## � Live Demo
+
+**[Visit the Live App](https://weather-react-4ir5je9xa-hsn200406s-projects.vercel.app/)** – Try it out now without any setup!
+
+## �🌟 Features
 
 - **Current Weather**: Search for any city and view real-time weather data including temperature, humidity, wind speed, and weather conditions
 - **5-Day Forecast**: View the 5-day weather forecast with daily temperature and weather descriptions
